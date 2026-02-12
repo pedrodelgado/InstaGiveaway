@@ -1,0 +1,1635 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0iI2UzZTdmMiI+CiAgPHBhdGggZD0iTTMwIDZoNHYxNmw2LTYgMyAzLTkgOWgxMHYtOGg0djhsOC04IDMgMy0xMSAxMWgxMHY0aC0xMGwxMSAxMS0zIDMtOC04djhoLTR2LThoLTEwbDkgOS0zIDMtNi02djE2aC00di0xNmwtNiA2LTMtMyA5LTloLTEwdjhoLTR2LThsLTggOC0zLTMgMTEtMTFoLTEwdi00aDEwbC0xMS0xMSAzLTMgOCA4di04aDR2OGgxMGwtOS05IDMtMyA2IDZ6Ii8+Cjwvc3ZnPg==">
+  <title>Holiday Giveaway</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;600;700&display=swap');
+
+    :root {
+      --bg: #7e8ca3;
+      --bg-soft: #9aa6bb;
+      --bg-hard: #6f7c93;
+      --text: #f7f8fb;
+      --muted: #d7dbe6;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --accent: #2c6fa8;
+      --accent-strong: #1f5182;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(0deg, rgba(26,33,47,0.72), rgba(26,33,47,0.45)),
+        url('./assets/holiday-bg.jpg') center/cover fixed no-repeat;
+      display: flex;
+      justify-content: center;
+      padding: 18px 12px 32px;
+    }
+
+    .shell {
+      width: min(980px, 100%);
+      background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snowflake {
+      position: absolute;
+      width: 38px;
+      height: 38px;
+      opacity: 0.35;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.25));
+    }
+
+    .snowflake svg { width: 100%; height: 100%; fill: #e3e7f2; }
+
+    .sf-1 { top: 18px; left: 18px; }
+    .sf-2 { top: 18px; right: 18px; }
+    .sf-3 { bottom: 18px; left: 18px; }
+    .sf-4 { bottom: 18px; right: 18px; }
+
+    header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .handle {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .poster {
+      width: 104px;
+      height: 104px;
+      border-radius: 14px;
+      border: 4px solid #f4f7fd;
+      background: url('./assets/holiday-bg.jpg') center/cover no-repeat;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      font-family: 'Playfair Display', 'Montserrat', serif;
+      letter-spacing: 0.8px;
+    }
+
+    .subtitle {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.3px;
+    }
+
+    .grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(280px, 340px) 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 12px;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .micro {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.2px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      resize: vertical;
+      font-size: 14px;
+      line-height: 1.5;
+      outline: none;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea:focus {
+      border-color: rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 4px rgba(221,42,123,0.12);
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: #f8f9fc;
+      min-width: 140px;
+      background: linear-gradient(135deg, #3779b8, #2a5a8b);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.2s ease;
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px var(--card-border);
+    }
+
+    .btn.small { padding: 10px 12px; min-width: auto; }
+
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn:active { transform: translateY(0); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+    .btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .info-line {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .stack-area {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .stack-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .stack-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 11;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 12px 28px rgba(0,0,0,0.3);
+      display: grid;
+      place-items: center;
+    }
+
+    .stack {
+      position: relative;
+      width: min(520px, 100%);
+      height: min(360px, 78%);
+      perspective: 1200px;
+      display: grid;
+      place-items: center;
+    }
+
+    .stack-item {
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 92%;
+      height: 52px;
+      border-radius: 999px;
+      background: rgba(247, 248, 250, 0.8);
+      color: #0f0f11;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+      letter-spacing: 0.2px;
+      padding: 0 24px;
+    }
+
+    .stack-item.active {
+      background: #2988e6;
+      color: #fff;
+      box-shadow: 0 18px 32px rgba(41,136,230,0.55);
+      font-size: 20px;
+      z-index: 100;
+    }
+
+    .spine {
+      position: absolute;
+      top: 50%;
+      width: 40px;
+      height: 40px;
+      background: #113f68;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+
+    .spine::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .spine.left { left: 10px; }
+    .spine.right { right: 10px; }
+
+    .winner-card {
+      background: rgba(255,255,255,0.28);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px;
+      width: 100%;
+      text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .winner-card .label {
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.2px;
+      margin-bottom: 4px;
+    }
+
+    .winner-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      text-shadow: 0 4px 14px rgba(255, 179, 71, 0.35);
+    }
+
+    .stat-line {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--card-border);
+      letter-spacing: 0.2px;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 720px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .shell { padding: 18px; }
+      .grid { grid-template-columns: 1fr; }
+      .stack { width: 100%; height: 300px; }
+      .stack-wrap { aspect-ratio: 4 / 5; }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="snowflake sf-1"><svg viewBox="0 0 64 64"><path d="M30 6h4v16l6-6 3 3-9 9h10v-8h4v8l8-8 3 3-11 11h10v4h-10l11 11-3 3-8-8v8h-4v-8h-10l9 9-3 3-6-6v16h-4v-16l-6 6-3-3 9-9h-10v8h-4v-8l-8 8-3-3 11-11h-10v-4h10l-11-11 3-3 8 8v-8h4v8h10l-9-9 3-3 6 6z"/></svg></div>
+    <div class="snowflake sf-2"><svg viewBox="0 0 64 64"><path d="M30 6h4v16l6-6 3 3-9 9h10v-8h4v8l8-8 3 3-11 11h10v4h-10l11 11-3 3-8-8v8h-4v-8h-10l9 9-3 3-6-6v16h-4v-16l-6 6-3-3 9-9h-10v8h-4v-8l-8 8-3-3 11-11h-10v-4h10l-11-11 3-3 8 8v-8h4v8h10l-9-9 3-3 6 6z"/></svg></div>
+    <div class="snowflake sf-3"><svg viewBox="0 0 64 64"><path d="M30 6h4v16l6-6 3 3-9 9h10v-8h4v8l8-8 3 3-11 11h10v4h-10l11 11-3 3-8-8v8h-4v-8h-10l9 9-3 3-6-6v16h-4v-16l-6 6-3-3 9-9h-10v8h-4v-8l-8 8-3-3 11-11h-10v-4h10l-11-11 3-3 8 8v-8h4v8h10l-9-9 3-3 6 6z"/></svg></div>
+    <div class="snowflake sf-4"><svg viewBox="0 0 64 64"><path d="M30 6h4v16l6-6 3 3-9 9h10v-8h4v8l8-8 3 3-11 11h10v4h-10l11 11-3 3-8-8v8h-4v-8h-10l9 9-3 3-6-6v16h-4v-16l-6 6-3-3 9-9h-10v8h-4v-8l-8 8-3-3 11-11h-10v-4h10l-11-11 3-3 8 8v-8h4v8h10l-9-9 3-3 6 6z"/></svg></div>
+    <header>
+      <div class="handle">
+        <div class="poster"></div>
+        <div>
+          <h1>Holiday Giveaway</h1>
+          <div class="subtitle">@iris.the.dalmatian - @the.spotted.dogs</div>
+        </div>
+      </div>
+      <div class="tag">Wintery picker - Paste names - Spin to reveal a winner</div>
+    </header>
+
+    <div class="grid">
+      <div class="card input-card">
+        <label for="entries">Contest entries</label>
+        <textarea id="entries" placeholder="friend_one&#10;friend_two&#10;friend_three"></textarea>
+        <div class="controls">
+          <div class="info-line" id="entryInfo">0 entries loaded</div>
+        </div>
+
+        <div class="info-line">Paste names (one per line). Duplicate lines boost chances.</div>
+
+        <div class="controls-row">
+          <button class="btn secondary small" id="resetSpinBtn">Reset spin</button>
+          <button class="btn secondary small" id="clearListBtn">Clear names</button>
+          <button class="btn secondary small" id="shareBtn" disabled>Copy share link</button>
+          <div class="micro" id="shareStatus"></div>
+        </div>
+      </div>
+
+      <div class="card stack-area">
+        <div class="stack-header">
+          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+            <button class="btn" id="spinBtn" disabled>Spin the names</button>
+          </div>
+          <div class="controls" style="margin:0; gap:8px;">
+            <label for="spinDuration" style="margin:0; color: var(--muted); font-size:13px;">Spin duration</label>
+            <select id="spinDuration" class="tag" style="padding: 8px 10px; cursor:pointer;">
+              <option value="4000">4s</option>
+              <option value="6000" selected>6s</option>
+              <option value="8000">8s</option>
+              <option value="10000">10s</option>
+            </select>
+            <div class="tag">Entries: <span id="entryCount">0</span> | Last spin: <span id="lastSpin">-</span></div>
+          </div>
+        </div>
+        <div class="stack-wrap">
+          <div class="stack" id="stack"></div>
+          <div class="spine left"></div>
+          <div class="spine right"></div>
+        </div>
+        <div class="winner-card">
+          <div class="label">Winner</div>
+          <div class="winner-name" id="winnerName">Waiting to spin...</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">Built for @iris.the.dalmatian — Version v1.0.2</div>
+  </div>
+
+  <script>
+    const entriesInput = document.getElementById('entries');
+    const spinBtn = document.getElementById('spinBtn');
+    const spinDurationSelect = document.getElementById('spinDuration');
+    const entryInfo = document.getElementById('entryInfo');
+    const entryCountLabel = document.getElementById('entryCount');
+    const winnerName = document.getElementById('winnerName');
+    const lastSpin = document.getElementById('lastSpin');
+    const stackContainer = document.getElementById('stack');
+    const resetSpinBtn = document.getElementById('resetSpinBtn');
+    const clearListBtn = document.getElementById('clearListBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const shareStatus = document.getElementById('shareStatus');
+    const appVersion = 'v1.0.2';
+
+    let entries = [];
+    let currentIndex = 0;
+    let spinning = false;
+    let confettiCleanup = null;
+    let spinFrameId = null;
+    let spinCancelled = false;
+    let shareLinkCache = '';
+    let shareSeed = 0;
+
+    function setShareStatus(msg) {
+      if (shareStatus) shareStatus.textContent = msg;
+    }
+
+    function resetShare(message = 'Spin to create a share link.') {
+      shareLinkCache = '';
+      shareSeed = 0;
+      shareBtn.disabled = true;
+      setShareStatus(message);
+    }
+
+    function parseTextareaEntries() {
+      return entriesInput.value
+        .split('\n')
+        .map(v => v.trim())
+        .filter(Boolean);
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function encode64(str) {
+      try { return btoa(unescape(encodeURIComponent(str))); } catch { return ''; }
+    }
+
+    function setEntries(newEntries, preserveOrder = false) {
+      entries = preserveOrder ? [...newEntries] : shuffle([...newEntries]); // randomize visual order unless preserving
+      currentIndex = 0;
+      updateEntryState(false);
+      renderStack();
+      resetShare();
+    }
+
+    function buildShareUrl(winner, seedOverride = null) {
+      const winnerClean = (winner || '').replace(/^@/, '');
+      if (!winnerClean || entries.length === 0) return '';
+      const seed = seedOverride !== null ? seedOverride : shareSeed || Math.floor(Math.random() * 1_000_000_000);
+      shareSeed = seed;
+      const orderStr = entries.join('\n');
+      const usingDefault = entries.length === defaultEntriesList.length && orderStr === defaultEntriesText.trim();
+      const params = new URLSearchParams({
+        winner: encode64(winnerClean),
+        duration: spinDurationSelect.value,
+        seed: seed.toString(),
+        v: appVersion
+      });
+      if (usingDefault) {
+        params.set('default', '1');
+      } else {
+        params.set('order', encode64(orderStr));
+      }
+      const isLocalHost = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
+      const isFile = window.location.protocol === 'file:';
+      const baseDir = new URL('.', window.location.href); // current folder with trailing slash
+      const preferredBase = (isLocalHost || isFile)
+        ? 'https://pedrodelgado.ca/insta/'
+        : baseDir.href;
+      const shareUrl = new URL('share.html', preferredBase);
+      shareUrl.search = params.toString();
+      return shareUrl.toString();
+    }
+
+    function updateEntryState(fromTextarea = true) {
+      if (fromTextarea) {
+        entries = parseTextareaEntries();
+      }
+      entryInfo.textContent = `${entries.length} entr${entries.length === 1 ? 'y' : 'ies'} loaded`;
+      entryCountLabel.textContent = entries.length;
+      spinBtn.disabled = entries.length === 0 || spinning;
+    }
+
+    function cancelSpin(resetWinner = false) {
+      spinCancelled = true;
+      if (spinFrameId) cancelAnimationFrame(spinFrameId);
+      spinFrameId = null;
+      spinning = false;
+      if (resetWinner) {
+        winnerName.textContent = 'Waiting to spin...';
+        lastSpin.textContent = '-';
+      }
+      spinBtn.disabled = entries.length === 0;
+    }
+
+    function renderStack() {
+      stackContainer.innerHTML = '';
+      if (entries.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'stack-item active';
+        empty.textContent = 'Add names to get started';
+        empty.style.background = 'rgba(255,255,255,0.08)';
+        empty.style.color = 'var(--muted)';
+        empty.style.boxShadow = 'none';
+        stackContainer.appendChild(empty);
+        return;
+      }
+
+      const spread = Math.min(4, Math.max(0, entries.length - 1));
+      for (let offset = -spread; offset <= spread; offset++) {
+        const idx = (currentIndex + offset + entries.length) % entries.length;
+        const depth = Math.abs(offset);
+        const translate = offset * 18;
+        const scale = 1 - depth * 0.06;
+        const opacity = Math.max(0.08, 1 - depth * 0.16);
+        const item = document.createElement('div');
+        item.className = 'stack-item' + (offset === 0 ? ' active' : '');
+        item.style.transform = `translateY(${translate}px) scale(${scale})`;
+        item.style.opacity = opacity;
+        item.style.zIndex = `${100 - depth}`;
+        item.textContent = entries[idx];
+        stackContainer.appendChild(item);
+      }
+    }
+
+    function spinList(fixedIndex = null, onDone) {
+      if (typeof fixedIndex === 'object') {
+        // Prevent click event from being treated as an index.
+        fixedIndex = null;
+      }
+      if (spinning || entries.length === 0) return;
+      if (confettiCleanup) confettiCleanup();
+      spinCancelled = false;
+      spinning = true;
+      spinBtn.disabled = true;
+      shareLinkCache = '';
+      shareBtn.disabled = true;
+      setShareStatus('Spinning...');
+
+      const winnerIndex = fixedIndex !== null ? fixedIndex : Math.floor(Math.random() * entries.length);
+      const baseSteps = 90; // keeps spin length consistent across entry counts
+      const stepsToWinner = (winnerIndex - ((currentIndex + baseSteps) % entries.length) + entries.length) % entries.length;
+      const steps = baseSteps + stepsToWinner;
+      const duration = Number(spinDurationSelect.value) || 6000;
+      const startTime = performance.now();
+      const startIndex = currentIndex;
+      let lastStep = -1;
+
+      function tick(now) {
+        if (spinCancelled) return;
+        const elapsed = now - startTime;
+        const t = Math.min(1, elapsed / duration);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const targetStep = Math.floor(eased * steps);
+
+        if (targetStep !== lastStep) {
+          lastStep = targetStep;
+          currentIndex = (startIndex + targetStep) % entries.length;
+          renderStack();
+        }
+
+        if (t < 1) {
+          spinFrameId = requestAnimationFrame(tick);
+        } else {
+          currentIndex = (startIndex + steps) % entries.length;
+          renderStack();
+          const winner = entries[currentIndex];
+          winnerName.textContent = `@${winner}`;
+          const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          lastSpin.textContent = nowStr;
+          spinning = false;
+          spinBtn.disabled = entries.length === 0;
+          launchConfetti();
+          shareSeed = Math.floor(Math.random() * 1_000_000_000);
+          shareLinkCache = buildShareUrl(winner, shareSeed);
+          if (shareLinkCache) {
+            setShareStatus('Share link ready. Click Copy share link.');
+            shareBtn.disabled = false;
+          }
+          spinFrameId = null;
+          if (onDone) onDone(winner);
+        }
+      }
+
+      spinFrameId = requestAnimationFrame(tick);
+    }
+
+    entriesInput.addEventListener('input', () => {
+      const names = parseTextareaEntries();
+      setEntries(names);
+      resetShare();
+    });
+
+    spinBtn.addEventListener('click', () => spinList());
+
+    resetSpinBtn.addEventListener('click', () => {
+      if (confettiCleanup) confettiCleanup();
+      cancelSpin(true);
+      currentIndex = 0;
+      renderStack();
+      resetShare();
+    });
+
+    clearListBtn.addEventListener('click', () => {
+      entriesInput.value = '';
+      if (confettiCleanup) confettiCleanup();
+      cancelSpin(true);
+      setEntries([]);
+      resetShare();
+    });
+
+    async function copyShareLink() {
+      const currentWinner = winnerName.textContent.trim();
+      if (!currentWinner || currentWinner.toLowerCase().includes('waiting')) {
+        setShareStatus('Spin first to share a winner.');
+        shareBtn.disabled = true;
+        return;
+      }
+      if (!shareLinkCache) {
+        shareSeed = Math.floor(Math.random() * 1_000_000_000);
+        shareLinkCache = buildShareUrl(currentWinner, shareSeed);
+      }
+      const url = shareLinkCache;
+      try {
+        await navigator.clipboard.writeText(url);
+        const opened = window.open(url, '_blank');
+        if (opened) {
+          opened.focus();
+          setShareStatus('Opened share page and copied link.');
+        } else {
+          setShareStatus('Share link copied. Pop-up blocked; open manually.');
+        }
+      } catch {
+        setShareStatus('Copy failed; select the URL below.');
+        alert(url);
+      }
+    }
+
+    shareBtn.addEventListener('click', () => {
+      setShareStatus('Copying...');
+      copyShareLink();
+    });
+
+    function launchConfetti() {
+      const duration = 60000; // 60 seconds
+      const end = Date.now() + duration;
+      const colors = ['#fefefe', '#d7e5ff', '#9fc5ff', '#7bb0ff'];
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'fixed';
+      canvas.style.inset = '0';
+      canvas.style.pointerEvents = 'none';
+      canvas.style.zIndex = '999';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+      let rafId = null;
+
+      const resizeHandler = () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      };
+      window.addEventListener('resize', resizeHandler);
+
+      const pieces = Array.from({ length: 160 }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height - height,
+        r: 6 + Math.random() * 6,
+        dx: Math.random() * 2 - 1,
+        dy: 2 + Math.random() * 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 2 - 1
+      }));
+
+      (function frame() {
+        ctx.clearRect(0, 0, width, height);
+        pieces.forEach(p => {
+          p.x += p.dx;
+          p.y += p.dy;
+          p.dy += 0.02;
+          if (p.y > height) {
+            p.y = -20;
+            p.x = Math.random() * width;
+            p.dy = 2 + Math.random() * 3;
+          }
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.tilt);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 2);
+          ctx.restore();
+        });
+        if (Date.now() < end) {
+          rafId = requestAnimationFrame(frame);
+        }
+      })();
+
+      confettiCleanup = () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        window.removeEventListener('resize', resizeHandler);
+        canvas.remove();
+        confettiCleanup = null;
+      };
+
+      // Auto cleanup after duration
+      setTimeout(() => confettiCleanup && confettiCleanup(), duration + 200);
+    }
+
+    // Preload supplied entrant list (includes duplicates for weighted chances).
+    const defaultEntries = `nala_en_pyjama
+cedarthegoldendood
+laylah.the.lab
+rickyandjaxonbrown
+pumalady75
+theherderz
+pinkmotorolarazr
+megandthemuttts
+kmb2009
+kmb2009
+rickyandjaxonbrown
+brady123smith8
+maggiethezoomer
+jafi_n_ripley
+rickyandjaxonbrown
+megandthemuttts
+pyscho.dog
+catdoglife6
+ashleymg7786
+catdoglife6
+brady123smith8
+laylah.the.lab
+megandthemuttts
+ourherdingtails
+sesame.and.chicken
+perfectpuppypack
+rickyandjaxonbrown
+lazy.pum.pumpkin
+maggiethezoomer
+theherderz
+laylah.the.lab
+brady123smith8
+pinkmotorolarazr
+pyscho.dog
+odin_le_danois
+tailsofbanditandchewie
+our_wine_adventures
+bellathesheltie_16
+rickyandjaxonbrown
+happyhousehippos
+rickyandjaxonbrown
+rickyandjaxonbrown
+pinkmotorolarazr
+happyhousehippos
+our_wine_adventures
+posh_millie
+bluejaysfan1988
+bluejaysfan1988
+posh_millie
+the_tails_of_charles_and_piggy
+milo.thetubpuppy
+onyx.the.floof
+posh_millie
+rickyandjaxonbrown
+happyhousehippos
+kmb2009
+ronan.the.ambull
+odin_le_danois
+tailsofbanditandchewie
+laylah.the.lab
+theherderz
+laylah.the.lab
+bellathesheltie_16
+nala_en_pyjama
+chaos_crew_k9s
+courtneymelling
+pinkmotorolarazr
+megandthemuttts
+milo.thetubpuppy
+rickyandjaxonbrown
+posh_millie
+nala_en_pyjama
+kristen.spies
+posh_millie
+pinkmotorolarazr
+posh_millie
+rickyandjaxonbrown
+laylah.the.lab
+ria_ktok
+rickyandjaxonbrown
+milo.thetubpuppy
+chaos_crew_k9s
+odin_le_danois
+nala_en_pyjama
+rickyandjaxonbrown
+theherderz
+theherderz
+theherderz
+theherderz
+theherderz
+theherderz
+theherderz
+laylah.the.lab
+cedarthegoldendood
+rickyandjaxonbrown
+rickyandjaxonbrown
+odin_le_danois
+laylah.the.lab
+milo.thetubpuppy
+the_tails_of_charles_and_piggy
+rickyandjaxonbrown
+bellathesheltie_16
+hell0nike
+adventureswithcayden
+rickyandjaxonbrown
+bellathesheltie_16
+laylah.the.lab
+mazie_thedalmatian
+onyx.the.floof
+maggiethezoomer
+bluejaysfan1988
+megandthemuttts
+milo.thetubpuppy
+our_wine_adventures
+bellathesheltie_16
+ourherdingtails
+laylah.the.lab
+pinkmotorolarazr
+laylah.the.lab
+the_tails_of_charles_and_piggy
+dogdad1003
+laylah.the.lab
+sir.walter.anderson
+pumalady75
+laylah.the.lab
+rickyandjaxonbrown
+laylah.the.lab
+megandthemuttts
+milo.thetubpuppy
+tailsofbanditandchewie
+theshibakiba
+dennisthebullymenance
+sesame.and.chicken
+tailsofbanditandchewie
+our_wine_adventures
+avro__orva
+our_wine_adventures
+laylah.the.lab
+beach_spoiledpawz
+rickyandjaxonbrown
+laylah.the.lab
+ange.curran
+laylah.the.lab
+posh_millie
+laylah.the.lab
+beach_spoiledpawz
+maxtheshepherd._
+nala_en_pyjama
+bluejaysfan1988
+bellathesheltie_16
+theshibakiba
+laylah.the.lab
+catdoglife6
+bellathesheltie_16
+megandthemuttts
+bellathesheltie_16
+ria_ktok
+onyx.the.floof
+laylah.the.lab
+cedarthegoldendood
+rickyandjaxonbrown
+laylah.the.lab
+rickyandjaxonbrown
+laylah.the.lab
+the_tails_of_charles_and_piggy
+our_wine_adventures
+rickyandjaxonbrown
+laylah.the.lab
+coco.and.ollie
+maggiethezoomer
+odin_le_danois
+chaos_crew_k9s
+maggiethezoomer
+onyx.the.floof
+pinkmotorolarazr
+laylah.the.lab
+megandthemuttts
+dbeninger
+aero.the.cockaton
+rickyandjaxonbrown
+laylah.the.lab
+rubykbb
+maggiethezoomer
+ashleymg7786
+rickyandjaxonbrown
+dbeninger
+ashleymg7786
+milo.thetubpuppy
+pyscho.dog
+kiah.and.kenobi
+tippet.the.adventure.dog
+aero.the.cockaton
+courtneymelling
+courtneymelling
+ria_ktok
+rickyandjaxonbrown
+lazy.pum.pumpkin
+kmb2009
+ria_ktok
+pinkmotorolarazr
+rickyandjaxonbrown
+courtneymelling
+megandthemuttts
+posh_millie
+nala_en_pyjama
+laylah.the.lab
+pinkmotorolarazr
+tailsofbanditandchewie
+the_tails_of_charles_and_piggy
+kmb2009
+theshepdisturber
+onyx.the.floof
+our_wine_adventures
+odin_le_danois
+rickyandjaxonbrown
+bellathesheltie_16
+rory_ausssie
+pinkmotorolarazr
+odin_le_danois
+kmb2009
+theshibakiba
+ourherdingtails
+theherderz
+nala_en_pyjama
+rickyandjaxonbrown
+chaos_crew_k9s
+ria_ktok
+theshepdisturber
+coco.and.ollie
+onyx.the.floof
+ronan.the.ambull
+rubykbb
+coco.and.ollie
+ourherdingtails
+tippet.the.adventure.dog
+maxtheshepherd._
+bellathesheltie_16
+rickyandjaxonbrown
+chaos_crew_k9s
+lazy.pum.pumpkin
+aero.the.cockaton
+odin_le_danois
+the_tails_of_charles_and_piggy
+posh_millie
+bellathesheltie_16
+pinkmotorolarazr
+rickyandjaxonbrown
+bellathesheltie_16
+posh_millie
+ronan.the.ambull
+milo.thetubpuppy
+tippet.the.adventure.dog
+laylah.the.lab
+fredsadventures5
+chaos_crew_k9s
+laylah.the.lab
+cedarthegoldendood
+coco.and.ollie
+rickyandjaxonbrown
+odin_le_danois
+odin_le_danois
+pnwpointnherd
+rickyandjaxonbrown
+pinkmotorolarazr
+jafi_n_ripley
+rickyandjaxonbrown
+posh_millie
+mazie_thedalmatian
+mazie_thedalmatian
+our_wine_adventures
+pyscho.dog
+pinkmotorolarazr
+cedarthegoldendood
+laylah.the.lab
+bellathesheltie_16
+maggiethezoomer
+nala_en_pyjama
+our_wine_adventures
+pnwpointnherd
+ourherdingtails
+beach_spoiledpawz
+the_tails_of_charles_and_piggy
+pinkmotorolarazr
+courtneymelling
+nala_en_pyjama
+onyx.the.floof
+rickyandjaxonbrown
+tailsofbanditandchewie
+the_tails_of_charles_and_piggy
+rickyandjaxonbrown
+ashleymg7786
+laylah.the.lab
+brady123smith8
+bluejaysfan1988
+beach_spoiledpawz
+ourherdingtails
+tailsfrompeaktobeach
+beach_spoiledpawz
+milo.thetubpuppy
+laylah.the.lab
+beach_spoiledpawz
+chaos_crew_k9s
+sesame.and.chicken
+aero.the.cockaton
+sesame.and.chicken
+pinkmotorolarazr
+brady123smith8
+kmb2009
+maggiethezoomer
+onyx.the.floof
+lazy.pum.pumpkin
+zoeyinpittsburgh
+kmb2009
+rubykbb
+tippet.the.adventure.dog
+beach_spoiledpawz
+posh_millie
+kmb2009
+kmb2009
+ashleymg7786
+onyx.the.floof
+happyhousehippos
+kmb2009
+theshepdisturber
+dennisthebullymenance
+laylah.the.lab
+catdoglife6
+megandthemuttts
+rickyandjaxonbrown
+bellathesheltie_16
+rubykbb
+catdoglife6
+kmb2009
+posh_millie
+cedarthegoldendood
+pinkmotorolarazr
+laylah.the.lab
+laylah.the.lab
+bluejaysfan1988
+bluejaysfan1988
+the_tails_of_charles_and_piggy
+pinkmotorolarazr
+pinkmotorolarazr
+mazie_thedalmatian
+megandthemuttts
+courtneymelling
+megandthemuttts
+pnwpointnherd
+megandthemuttts
+chaos_crew_k9s
+dbeninger
+tailsfrompeaktobeach
+ourherdingtails
+odin_le_danois
+rickyandjaxonbrown
+milo.thetubpuppy
+the_tails_of_charles_and_piggy
+laylah.the.lab
+mazie_thedalmatian
+maggiethezoomer
+pinkmotorolarazr
+pinkmotorolarazr
+the_tails_of_charles_and_piggy
+the_tails_of_charles_and_piggy
+chaos_crew_k9s
+chaos_crew_k9s
+theherderz
+tippet.the.adventure.dog
+dbeninger
+brady123smith8
+courtneymelling
+milo.thetubpuppy
+beach_spoiledpawz
+coco.and.ollie
+rickyandjaxonbrown
+tailsfrompeaktobeach
+onyx.the.floof
+maggiethezoomer
+pnwpointnherd
+mazie_thedalmatian
+megandthemuttts
+laylah.the.lab
+the_tails_of_charles_and_piggy
+odin_le_danois
+rickyandjaxonbrown
+tippet.the.adventure.dog
+laylah.the.lab
+laylah.the.lab
+cedarthegoldendood
+luluoni113
+laylah.the.lab
+rickyandjaxonbrown
+niva_stephenson
+odin_le_danois
+laylah.the.lab
+aero.the.cockaton
+the_tails_of_charles_and_piggy
+rickyandjaxonbrown
+pyscho.dog
+laylah.the.lab
+megandthemuttts
+rory_ausssie
+rubykbb
+rickyandjaxonbrown
+courtneymelling
+pinkmotorolarazr
+pinkmotorolarazr
+maggiethezoomer
+rickyandjaxonbrown
+bellathesheltie_16
+ronan.the.ambull
+laylah.the.lab
+happyhousehippos
+rickyandjaxonbrown
+nala_en_pyjama
+bellathesheltie_16
+laylah.the.lab
+bellathesheltie_16
+laylah.the.lab
+sesame.and.chicken
+rickyandjaxonbrown
+ashleymg7786
+theherderz
+megandthemuttts
+rubykbb
+coco.and.ollie
+rickyandjaxonbrown
+onyx.the.floof
+lazy.pum.pumpkin
+beach_spoiledpawz
+tippet.the.adventure.dog
+chaos_crew_k9s
+catdoglife6
+rickyandjaxonbrown
+pinkmotorolarazr
+aero.the.cockaton
+laylah.the.lab
+chaos_crew_k9s
+laylah.the.lab
+bellathesheltie_16
+rickyandjaxonbrown
+kmb2009
+kmb2009
+haaaveyoumet_teddy
+laylah.the.lab
+bellathesheltie_16
+coco.and.ollie
+ashleymg7786
+odin_le_danois
+the_tails_of_charles_and_piggy
+happyhousehippos
+reesethegzd
+laylah.the.lab
+coco.and.ollie
+bellathesheltie_16
+chaos_crew_k9s
+laylah.the.lab
+sesame.and.chicken
+bellathesheltie_16
+megandthemuttts
+bellathesheltie_16
+laylah.the.lab
+nala_en_pyjama
+rickyandjaxonbrown
+coco.and.ollie
+megandthemuttts
+chaos_crew_k9s
+niva_stephenson
+onyx.the.floof
+maggiethezoomer
+milo.thetubpuppy
+pinkmotorolarazr
+onyx.the.floof
+onyx.the.floof
+catdoglife6
+bellathesheltie_16
+chaos_crew_k9s
+laylah.the.lab
+posh_millie
+cedarthegoldendood
+coco.and.ollie
+lazy.pum.pumpkin
+maxtheshepherd._
+maggiethezoomer
+posh_millie
+onyx.the.floof
+onyx.the.floof
+maggiethezoomer
+posh_millie
+tippet.the.adventure.dog
+rickyandjaxonbrown
+milo.thetubpuppy
+onyx.the.floof
+milo.thetubpuppy
+rickyandjaxonbrown
+maggiethezoomer
+rickyandjaxonbrown
+ronan.the.ambull
+courtneymelling
+odin_le_danois
+laylah.the.lab
+sesame.and.chicken
+beach_spoiledpawz
+beach_spoiledpawz
+zoesuzette
+maxtheshepherd._
+rickyandjaxonbrown
+bellathesheltie_16
+rickyandjaxonbrown
+pyscho.dog
+the_tails_of_charles_and_piggy
+courtneymelling
+rickyandjaxonbrown
+avro__orva
+haaaveyoumet_teddy
+kmb2009
+happyhousehippos
+laylah.the.lab
+bellathesheltie_16
+laylah.the.lab
+chaos_crew_k9s
+chaos_crew_k9s
+rory_ausssie
+haaaveyoumet_teddy
+laylah.the.lab
+cedarthegoldendood
+avro__orva
+coco.and.ollie
+maggiethezoomer
+whisvan2015
+lazy.pum.pumpkin
+laylah.the.lab
+the_tails_of_charles_and_piggy
+reesethegzd
+the_tails_of_charles_and_piggy
+pnwpointnherd
+tailsfrompeaktobeach
+lazy.pum.pumpkin
+tailsfrompeaktobeach
+sir.walter.anderson
+rickyandjaxonbrown
+avro__orva
+nala_en_pyjama
+catdoglife6
+nala_en_pyjama
+pyscho.dog
+nala_en_pyjama
+dbeninger
+catdoglife6
+bluejaysfan1988
+beach_spoiledpawz
+milo.thetubpuppy
+the_tails_of_charles_and_piggy
+splashdashspots
+the_tails_of_charles_and_piggy
+mazie_thedalmatian
+laylah.the.lab
+mazie_thedalmatian
+megandthemuttts
+haaaveyoumet_teddy
+kmb2009
+catdoglife6
+laylah.the.lab
+beach_spoiledpawz
+laylah.the.lab
+nala_en_pyjama
+nala_en_pyjama
+ronan.the.ambull
+odin_le_danois
+chaos_crew_k9s
+ange.curran
+happyhousehippos
+luluoni113
+lazy.pum.pumpkin
+nala_en_pyjama
+happyhousehippos
+megandthemuttts
+the_tails_of_charles_and_piggy
+onyx.the.floof
+lazy.pum.pumpkin
+rickyandjaxonbrown
+pyscho.dog
+cedarthegoldendood
+jafi_n_ripley
+nala_en_pyjama
+ourherdingtails
+odin_le_danois
+chaos_crew_k9s
+pinkmotorolarazr
+pinkmotorolarazr
+megandthemuttts
+rickyandjaxonbrown
+odin_le_danois
+rubykbb
+laylah.the.lab
+rickyandjaxonbrown
+pinkmotorolarazr
+rickyandjaxonbrown
+chaos_crew_k9s
+megandthemuttts
+rickyandjaxonbrown
+laylah.the.lab
+bellathesheltie_16
+the_tails_of_charles_and_piggy
+maggiethezoomer
+theshibakiba
+bellathesheltie_16
+coco.and.ollie
+tippet.the.adventure.dog
+dbeninger
+chaos_crew_k9s
+rubykbb
+maggiethezoomer
+onyx.the.floof
+lazy.pum.pumpkin
+rickyandjaxonbrown
+pnwpointnherd
+ronan.the.ambull
+megandthemuttts
+bluejaysfan1988
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+nala_en_pyjama
+bellathesheltie_16
+laylah.the.lab
+laylah.the.lab
+megandthemuttts
+rickyandjaxonbrown
+pinkmotorolarazr
+kmb2009
+rickyandjaxonbrown
+rickyandjaxonbrown
+laylah.the.lab
+rickyandjaxonbrown
+chaos_crew_k9s
+splashdashspots
+ourherdingtails
+pnwpointnherd
+laylah.the.lab
+maggiethezoomer
+jafi_n_ripley
+tippet.the.adventure.dog
+dbeninger
+dennisthebullymenance
+catdoglife6
+aero.the.cockaton
+kmb2009
+dennisthebullymenance
+chaos_crew_k9s
+miyah_themunstercross
+bellathesheltie_16
+pyscho.dog
+laylah.the.lab
+megandthemuttts
+kmb2009
+odin_le_danois
+rickyandjaxonbrown
+megandthemuttts
+our_wine_adventures
+our_wine_adventures
+rickyandjaxonbrown
+courtneymelling
+pyscho.dog
+bellathesheltie_16
+b_a_hoot
+our_wine_adventures
+chaos_crew_k9s
+odin_le_danois
+the_tails_of_charles_and_piggy
+maggiethezoomer
+rickyandjaxonbrown
+rubykbb
+ria_ktok
+catdoglife6
+aero.the.cockaton
+ourherdingtails
+pinkmotorolarazr
+rickyandjaxonbrown
+aero.the.cockaton
+aero.the.cockaton
+b_a_hoot
+bellathesheltie_16
+posh_millie
+posh_millie
+posh_millie
+ashleymg7786
+rickyandjaxonbrown
+lazy.pum.pumpkin
+cedarthegoldendood
+laylah.the.lab
+beach_spoiledpawz
+megandthemuttts
+pinkmotorolarazr
+our_wine_adventures
+maggiethezoomer
+rickyandjaxonbrown
+laylah.the.lab
+maggiethezoomer
+chaos_crew_k9s
+megandthemuttts
+theshepdisturber
+megandthemuttts
+chaos_crew_k9s
+laylah.the.lab
+odin_le_danois
+odin_le_danois
+fredsadventures5
+bellathesheltie_16
+lazy.pum.pumpkin
+pnwpointnherd
+tailsfrompeaktobeach
+rickyandjaxonbrown
+odin_le_danois
+odin_le_danois
+megandthemuttts
+chaos_crew_k9s
+our_wine_adventures
+the_tails_of_charles_and_piggy
+laylah.the.lab
+chaos_crew_k9s
+rickyandjaxonbrown
+odin_le_danois
+odin_le_danois
+pyscho.dog
+rickyandjaxonbrown
+our_wine_adventures
+kmb2009
+rickyandjaxonbrown
+rickyandjaxonbrown
+laylah.the.lab
+megandthemuttts
+theshepdisturber
+megandthemuttts
+jafi_n_ripley
+rubykbb
+rickyandjaxonbrown
+posh_millie
+the_tails_of_charles_and_piggy
+maggiethezoomer
+nala_en_pyjama
+mazie_thedalmatian
+nala_en_pyjama
+pyscho.dog
+laylah.the.lab
+tailsfrompeaktobeach
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+tailsfrompeaktobeach
+maggiethezoomer
+nala_en_pyjama
+catdoglife6
+onyx.the.floof
+theherderz
+catdoglife6
+onyx.the.floof
+cedarthegoldendood
+pyscho.dog
+pinkmotorolarazr
+coco.and.ollie
+megandthemuttts
+megandthemuttts
+odin_le_danois
+coco.and.ollie
+rickyandjaxonbrown
+the_tails_of_charles_and_piggy
+onyx.the.floof
+laylah.the.lab
+megandthemuttts
+laylah.the.lab
+chaos_crew_k9s
+bellathesheltie_16
+pyscho.dog
+rory_ausssie
+bellathesheltie_16
+the_tails_of_charles_and_piggy
+chaos_crew_k9s
+rickyandjaxonbrown
+the_tails_of_charles_and_piggy
+onyx.the.floof
+coco.and.ollie
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+chaos_crew_k9s
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+maggiethezoomer
+maggiethezoomer
+maggiethezoomer
+maggiethezoomer
+maggiethezoomer
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+miyah_themunstercross
+rickyandjaxonbrown
+rickyandjaxonbrown
+rickyandjaxonbrown
+rickyandjaxonbrown
+rickyandjaxonbrown
+nala_en_pyjama
+nala_en_pyjama
+nala_en_pyjama
+nala_en_pyjama
+nala_en_pyjama
+sesame.and.chicken
+sesame.and.chicken
+sesame.and.chicken
+sesame.and.chicken
+sesame.and.chicken
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+laylah.the.lab
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+lazy.pum.pumpkin
+rickyandjaxonbrown
+rickyandjaxonbrown
+rickyandjaxonbrown
+rickyandjaxonbrown
+rickyandjaxonbrown
+maggiethezoomer
+maggiethezoomer
+maggiethezoomer
+maggiethezoomer
+maggiethezoomer
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba
+theshibakiba`;
+
+    const defaultEntriesText = defaultEntries;
+    const defaultEntriesList = defaultEntriesText.trim().split('\n');
+
+    entriesInput.value = defaultEntriesText.trim();
+    setEntries(defaultEntriesList, true);
+  </script>
+</body>
+</html>
